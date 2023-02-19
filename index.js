@@ -75,3 +75,19 @@ client.on("ready", function () {
 client.once('ready', () => {
     console.log('Ready!');
 });
+
+//modal shit
+
+client.on(Events.InteractionCreate, async interaction => {
+    if (!interaction.isModalSubmit()) return;
+    if (interaction.customId === 'myModal') {
+        await interaction.reply({ content: 'Your report was received successfully!' });
+    }
+});
+
+client.on(Events.InteractionCreate, interaction => {
+    if (!interaction.isModalSubmit()) return;
+    const favoriteColor = interaction.fields.getTextInputValue('favoriteColorInput');
+    const hobbies = interaction.fields.getTextInputValue('hobbiesInput');
+    console.log({ favoriteColor, hobbies });
+});

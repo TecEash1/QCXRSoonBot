@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="beb985f6-4077-4854-ad65-1fc4c3097328" name="Changes" comment="my brain is fucky wucky">
-      <change afterPath="$PROJECT_DIR$/commands/report.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/commands/adb.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/commands/bedrock.js" beforeDir="false" />
@@ -20,6 +19,7 @@
       <change beforePath="$PROJECT_DIR$/commands/ping.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/commands/qcgithub.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/commands/reinstall.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/report.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/report.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/commands/selectmenu.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/commands/servers.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/commands/sidequest.js" beforeDir="false" />
@@ -29,6 +29,7 @@
       <change beforePath="$PROJECT_DIR$/commands/unity.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/commands/versions.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/commands/yvr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/config.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

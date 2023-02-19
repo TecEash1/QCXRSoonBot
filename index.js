@@ -87,7 +87,7 @@ client.on(Events.InteractionCreate, async interaction => {
 
 client.on(Events.InteractionCreate, interaction => {
     if (!interaction.isModalSubmit()) return;
-    const favoriteColor = interaction.fields.getTextInputValue('favoriteColorInput');
-    const hobbies = interaction.fields.getTextInputValue('hobbiesInput');
-    console.log({ favoriteColor, hobbies });
+    const name = interaction.fields.getTextInputValue('reason');
+    const person = interaction.fields.getTextInputValue('person');
+    console.log({ reason, person });
 });

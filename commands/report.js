@@ -8,16 +8,16 @@ module.exports = {
         const modal = new ModalBuilder()
             .setCustomId('myModal')
             .setTitle('My Modal');
-        const favoriteColorInput = new TextInputBuilder()
-            .setCustomId('favoriteColorInput')
-            .setLabel("What's your favorite color?")
+        const name = new reason()
+            .setCustomId('reason')
+            .setLabel("reason")
             .setStyle(TextInputStyle.Short);
-        const hobbiesInput = new TextInputBuilder()
-            .setCustomId('hobbiesInput')
-            .setLabel("What's some of your favorite hobbies?")
+        const person = new TextInputBuilder()
+            .setCustomId('name')
+            .setLabel("What is the name of the player and send the video / mp3 if needed")
             .setStyle(TextInputStyle.Paragraph);
-        const firstActionRow = new ActionRowBuilder().addComponents(favoriteColorInput);
-        const secondActionRow = new ActionRowBuilder().addComponents(hobbiesInput);
+        const firstActionRow = new ActionRowBuilder().addComponents(reason);
+        const secondActionRow = new ActionRowBuilder().addComponents(name);
         modal.addComponents(firstActionRow, secondActionRow);
         await interaction.showModal(modal);
     },

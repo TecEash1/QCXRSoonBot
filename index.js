@@ -89,4 +89,3 @@ client.on(Events.InteractionCreate, async interaction => {
         await interaction.reply({ content: 'Your report was received successfully!' });
     }
 });
-

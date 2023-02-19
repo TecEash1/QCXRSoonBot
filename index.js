@@ -88,6 +88,6 @@ client.on(Events.InteractionCreate, async interaction => {
 client.on(Events.InteractionCreate, interaction => {
     if (!interaction.isModalSubmit()) return;
     const name = interaction.fields.getTextInputValue('reason');
-    const person = interaction.fields.getTextInputValue('person');
-    console.log({ reason, person });
+    const person = interaction.fields.getTextInputValue('name');
+    console.log({ reason, name });
 });

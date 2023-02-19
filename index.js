@@ -57,7 +57,7 @@ client.on('interactionCreate', async interaction => {
         await command.execute(interaction);
     } catch (error) {
         console.error(error);
-        await interaction.reply({ content: 'Oof! (ERROR) Contact <@317814254336081930>!', ephemeral: true });
+        await interaction.reply({ content: 'Oof! (ERROR) Contact <@317814254336081930> or <@719815864135712799>!', ephemeral: true });
     }
 });
 
@@ -81,13 +81,12 @@ client.once('ready', () => {
 client.on(Events.InteractionCreate, async interaction => {
     if (!interaction.isModalSubmit()) return;
     if (interaction.customId === 'myModal') {
+        const reason = interaction.fields.getTextInputValue('reason')
+        const name = interaction.fields.getTextInputValue('name')
+        const channel = await client.channels.fetch('REPORT_CHANNEL_ID');
+        const user = interaction.user;
+        await channel.send({ content: `New report submitted by ${user.username}#${user.discriminator}:\n\nReason: ${reason}\nName: ${name}` });
         await interaction.reply({ content: 'Your report was received successfully!' });
     }
 });
 
-client.on(Events.InteractionCreate, interaction => {
-    if (!interaction.isModalSubmit()) return;
-    const name = interaction.fields.getTextInputValue('reason');
-    const person = interaction.fields.getTextInputValue('person');
-    console.log({ reason, person });
-});

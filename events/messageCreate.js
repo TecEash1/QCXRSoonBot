@@ -8,7 +8,7 @@
 // Declares constants (destructured) to be used in this file.
 
 const { Collection, ChannelType } = require("discord.js");
-const { prefix, owner } = require("../config.json");
+const { prefix, owner, OPENAI_API_KEY } = require("../config.json");
 
 // Prefix regex, we will use to match in mention prefix.
 

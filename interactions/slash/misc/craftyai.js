@@ -7,8 +7,8 @@ const chatSessions = new Map();
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName('chatgpt')
-    .setDescription('Chat with ChatGPT')
+    .setName('craftyai')
+    .setDescription('Chat with CraftyAI')
     .addStringOption(option =>
       option.setName('action')
         .setDescription('Open or close a chat session')
@@ -45,7 +45,7 @@ module.exports = {
       });
 
       await interaction.reply({
-        content: 'Your chat session with ChatGPT has started. Please check your DMs.',
+        content: 'Your chat session with CraftyAi (powered by OpenAi's models) has started. Please check your DMs.',
         ephemeral: true,
       });
 
@@ -56,7 +56,7 @@ module.exports = {
       });
 
       await dmChannel.send({
-        content: 'Hi! I am ChatGPT, a language model trained by OpenAI. I can chat with you about almost anything. Type anything to start chatting with me!',
+        content: 'Hi! I am CraftyAI (chatgpt), a language model trained by OpenAI. My knowledge set has been enhanced by my devs! I can chat with you about almost anything. Type anything to start chatting with me!',
       });
 
       const filter = message => !message.author.bot;

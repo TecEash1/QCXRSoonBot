@@ -13,9 +13,11 @@ module.exports = {
       option.setName('action')
         .setDescription('Open or close a chat session')
         .setRequired(true)
-        .addChoice('Open', 'open')
-        .addChoice('Close', 'close')
-    ),
+        .addChoices(
+        { name: 'Open', value: 'open' },
+				{ name: 'Close', value: 'close' },
+
+        )),
 
   async execute(interaction) {
     const { guild, user, channel } = interaction;
@@ -45,7 +47,7 @@ module.exports = {
       });
 
       await interaction.reply({
-        content: 'Your chat session with CraftyAi (powered by OpenAi's models) has started. Please check your DMs.',
+        content: 'Your chat session with ChatGPT has started. Please check your DMs.',
         ephemeral: true,
       });
 
@@ -56,7 +58,7 @@ module.exports = {
       });
 
       await dmChannel.send({
-        content: 'Hi! I am CraftyAI (chatgpt), a language model trained by OpenAI. My knowledge set has been enhanced by my devs! I can chat with you about almost anything. Type anything to start chatting with me!',
+        content: 'Hi! I am ChatGPT, a language model trained by OpenAI. I can chat with you about almost anything. Type anything to start chatting with me!',
       });
 
       const filter = message => !message.author.bot;
@@ -94,25 +96,29 @@ module.exports = {
         } catch (error) {
           console.error(error);
           session.dmChannel.send({
-            content: 'An error occurred while processing your request. Please try again later.',
-    });
-  chatSessions.delete(user.id);
- }
-};   chatLoop();
-} else if (action === 'close') {
-  if (!chatSessions.has(user.id)) {
-    return interaction.reply({
-      content: 'You do not have an open chat session. Please start one with /chatgpt open',
-      ephemeral: true,
-    });
+            content: 'An error occurred while processing your request. Please try again later'
+          });
+          chatSessions.delete(user.id);
+        }
+      };
+      chatLoop();
+    } else if (action === 'close') {
+      if (!chatSessions.has(user.id)) {
+        return interaction.reply({
+          content: 'You do not have an open chat session. Please start one with /chatgpt open',
+          ephemeral: true,
+        });
+      }
+    
+      const session = chatSessions.get(user.id);
+      session.open = false;
+      chatSessions.set(user.id, session);
+      return interaction.reply({
+        content: 'Your chat session with ChatGPT has ended. Thank you for chatting!',
+        ephemeral: true,
+      });
+    }
   }
+}    
 
-  const session = chatSessions.get(user.id);
-  session.open = false;
-  chatSessions.set(user.id, session);
-  return interaction.reply({
-    content: 'Your chat session with ChatGPT has ended. Thank you for chatting!',
-    ephemeral: true,
-  });
-}
 

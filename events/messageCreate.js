@@ -30,6 +30,37 @@ module.exports = {
 
 		const { client, guild, channel, content, author } = message;
 
+
+                if (message.channel.type !== 'DM' || message.author.bot) return;
+
+                  const userId = message.author.id;
+                  const session = chatSessions.get(userId);
+
+              if (session && session.open) {
+              try {
+                const response = await axios.post('https://api.openai.com/v1/engines/davinci-codex/completions', {
+                prompt: `${message.content}\nA:`,
+                max_tokens: 150,
+                n: 1,
+              }, {
+              headers: {
+             'Content-Type': 'application/json',
+             'Authorization': `Bearer ${OPENAI_API_KEY}`,
+           },
+       });
+
+        const answer = response.data.choices[0].text.trim();
+        session.dmChannel.send({
+          content: answer,
+        });
+      } catch (error) {
+        console.error(error);
+        session.dmChannel.send({
+          content: 'An error occurred while processing your request. Please try again later.',
+        }); 
+      }
+    }
+  });
 		// Checks if the bot is mentioned in the message all alone and triggers onMention trigger.
 		// You can change the behavior as per your liking at ./messages/onMention.js
 
